@@ -1,0 +1,9 @@
+@font-face {
+    font-family: "Nud Motoya Maru";
+    src: url("/fonts/nud-montoya-maru/nud-montoya-maru.eot");
+    src: url("/fonts/nud-montoya-maru/nud-montoya-maru.eot?#iefix") format("embedded-opentype"),
+        url("/fonts/nud-montoya-maru/nud-montoya-maru.woff2") format("woff2"),
+        url("/fonts/nud-montoya-maru/nud-montoya-maru.woff") format("woff"),
+        url("/fonts/nud-montoya-maru/nud-montoya-maru.ttf") format("truetype"),
+        url("/fonts/nud-montoya-maru/nud-montoya-maru.svg#Nud Motoya Maru") format("svg");
+}
