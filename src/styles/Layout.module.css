@@ -1,0 +1,232 @@
+.layout {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    min-height: 0;
+    min-width: 0;
+    flex-wrap: nowrap;
+    flex-direction: column;
+}
+
+.header {
+    height: 4em;
+    width: 100%;
+    padding: 0 1em;
+    background-color: var(--background-color-filler);
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 1em;
+    flex: 1;
+    max-width: 310px;
+}
+
+.logoimage {
+    width: 2.67em;
+    height: 2.67em;
+    margin-bottom: -0.6em;
+}
+
+.logotext {
+    font-size: 2em;
+    font-weight: 700;
+    color: #313c63;
+}
+
+.search {
+    display: flex;
+    flex: 1;
+    max-width: 600px;
+    flex-wrap: nowrap;
+    align-items: center;
+    position: relative;
+}
+
+.searchicon {
+    width: 2em;
+    text-align: right;
+    color: var(--color-gray);
+    z-index: 1;
+}
+
+.searchbox {
+    margin-left: -2em;
+    padding: 0 1em 0 3em;
+    flex: 1;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    height: 3em;
+    border-radius: 0.5em;
+    z-index: 1;
+}
+
+.resultbox {
+    background-color: var(--background-color);
+    border-radius: 0.5em;
+    position: absolute;
+    transition: .2s;
+    inset: 0;
+    overflow: hidden;
+    padding-top: 3em;
+}
+
+.results {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: auto;
+    background-color: var(--background-color-filler);
+    max-height: min(500px, calc(100vh - 10em));
+}
+
+.results:not(:empty) {
+    border-top: 1px solid var(--border-color);
+}
+
+.search[data-focused][data-focused=true] .resultbox {
+    background-color: var(--background-color-filler);
+    box-shadow: 0 0 3px 3px var(--box-shadow);
+    bottom: auto;
+}
+
+.search:not([data-focused][data-focused=true]) .resultbox>.results {
+    display: none;
+}
+
+.searchclear {
+    z-index: 1;
+    margin-inline: 0.2em;
+    min-height: 2em !important;
+    height: 2em !important;
+    min-width: 2em !important;
+    width: 2em !important;
+}
+
+.resultitem {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 0.67em;
+    border-bottom: 1px solid var(--border-color-light);
+}
+
+.options {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin-left: auto;
+    gap: 1em;
+    padding-left: 1em;
+}
+
+.user {
+    width: calc(3em - 5px);
+    height: calc(3em - 5px);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.user>img {
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.user:hover {
+    box-shadow: 0 0 0 5px var(--border-color);
+}
+
+.container {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    min-width: 0;
+    flex-wrap: nowrap;
+}
+
+.sidebar {
+    width: 320px;
+    background-color: var(--background-color-filler);
+}
+.sideleft {
+    border-right: 1px solid var(--border-color);
+}
+
+.footer {
+    height: 2em;
+    padding-inline: 1em;
+    width: 100%;
+    gap: 1em;
+    background-color: var(--background-color-filler);
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+    justify-content: space-between;
+}
+
+
+.footer>div {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.context {
+    flex: 1;
+    position: relative;
+    height: 100%;
+}
+
+.contextline {
+    position: absolute;
+    inset: 0;
+    line-height: 2.4em;
+    font-size: 13px;
+    font-weight: 700;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.items {
+    gap: 1em;
+    user-select: none;
+}
+
+.fops {
+    border: none;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 4px 6px;
+    background-color: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6em;
+}
+
+.fops>i {
+    scale: 0.8;
+}
+
+.fops:hover {
+    background-color: var(--background-color-hover);
+}
+
+.fops[data-active] {
+    background-color: var(--color);
+    color: var(--background-color);
+}

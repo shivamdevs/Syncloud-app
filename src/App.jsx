@@ -1,22 +1,46 @@
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { auth } from './firebase/user';
 import { useAuthState } from "react-firebase-hooks/auth";
 import Accounts from "myoasis-accounts";
 import Context from "./app/Context";
 import Index from "./components/Index";
+import Data from "./app/Data";
 
 function App() {
     const navigate = useNavigate();
     const location = useLocation();
     const [user, loading, error] = useAuthState(auth);
 
+    const [local, setLocal] = useState(() => {
+        if (window.localStorage) {
+            const storage = window.localStorage.getItem(`${Data.bucket}settings`);
+            try {
+                return storage ? JSON.parse(storage) : {};
+            } catch (error) {
+                return {};
+            }
+        }
+        return {};
+    });
+
     useEffect(() => {
         if (error) console.error(error);
     }, [error]);
 
+    function updateLocal(key, value) {
+        setLocal((old) => {
+            const list = {...old};
+            list[key] = value;
+            return list;
+        })
+    }
+
     useEffect(() => {
-    }, [user]);
+        if (window.localStorage) window.localStorage.setItem(`${Data.bucket}settings`, JSON.stringify(local));
+
+        document.documentElement.dataset.theme = local["theme"];
+    }, [local]);
 
     const context = {
 
@@ -36,6 +60,10 @@ function App() {
                 navigate("/", { replace: true });
             }
         },
+        updateTheme(theme) {
+            if (theme !== "dark") theme = "light";
+            updateLocal("theme", theme);
+        }
     };
 
     return (

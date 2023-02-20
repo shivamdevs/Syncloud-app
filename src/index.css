@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
 body {
     margin: 0;
-    font-family: "Nud Montoya Maru", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-family: "Lato", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 15px;
@@ -64,9 +66,53 @@ img {
 }
 
 :root {
-    --background-color: #f4f5f7;
+    --background-scroller: #dadce0;
+
+    --background-color: #e0e4ed;
+    --background-color-hover: #e4e8ee;
+    --background-color-active: #edf1f6;
+    --background-color-filler: #fff;
+
+    --background-color-button: #2b71ff;
+    --background-color-button-hover: #1550c7;
+    --background-color-button-active: #2495ff;
+
+    --background-color-tippy: #3d4657;
+    --color-tippy: #fff;
+
     --color: #323555;
-    --color-scheme: light;
+    --color-gray: #727888;
+
+    --border-color: #d3d3e7;
+    --border-color-light: #e6e6f3;
+
+    --box-shadow: #0002;
+    --color-scheme: none;
+}
+
+:root[data-theme="dark"] {
+    --background-scroller: #3d424c;
+
+    --background-color: #161a23;
+    --background-color-hover: #1b232b;
+    --background-color-active: #151e26;
+    --background-color-filler: #0a0d13;
+
+    --background-color-button: #2b71ff;
+    --background-color-button-hover: #1550c7;
+    --background-color-button-active: #2495ff;
+
+    --background-color-tippy: #9cb0d5;
+    --color-tippy: #1a1c24;
+
+    --color: #9093b7;
+    --color-gray: #727888;
+
+    --border-color: #252535;
+    --border-color-light: #191925;
+
+    --box-shadow: #20242a72;
+    --color-scheme: dark;
 }
 
 :root,
@@ -75,4 +121,112 @@ body {
     background-color: var(--background-color);
     color: var(--color);
     color-scheme: var(--color-scheme);
+}
+
+
+
+
+*::-webkit-scrollbar {
+    width: 1em;
+    height: 1em;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: var(--background-scroller);
+    background-clip: padding-box;
+    border: 0.26em solid transparent;
+    border-radius: 0.5em;
+    box-shadow: none;
+    min-height: 4em;
+    min-width: 4em;
+}
+
+*::-webkit-scrollbar-track,
+*::-webkit-scrollbar-track:hover {
+    background: none;
+    border: none;
+}
+
+.contextmenu {
+    border: 1px solid var(--border-color);
+    border-radius: 0.5em;
+    background: var(--background-color-filler);
+    box-shadow: 0 0 5px 3px var(--box-shadow);
+}
+
+.contextmenuitem {
+    background: var(--background-color-filler);
+    color: var(--color-gray);
+    font-weight: 600 !important;
+    padding: 1em 1.33em !important;
+    gap: 1.33em;
+}
+
+.contextmenuitem:hover {
+    color: var(--color);
+    background: var(--background-color-hover);
+}
+
+.contextmenuitem:active {
+    color: var(--color);
+    background: var(--background-color-active);
+}
+
+div:has(> .contextmenu.negative) {
+    translate: 0 -2em;
+}
+
+.tippy-box[data-theme~='apply'] {
+    background-color: var(--background-color-tippy);
+    color: var(--color-tippy);
+}
+
+
+
+
+
+.btnround {
+    display: inline-flex;
+    min-height: 2.5em;
+    height: 2.5em;
+    min-width: 2.5em;
+    width: 2.5em;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.33em;
+    border: none;
+    background-color: transparent;
+    transition: .2s;
+    cursor: pointer;
+    color: var(--color-gray);
+}
+
+.btnround:hover {
+    background-color: var(--background-color-hover);
+}
+
+.btnround:active {
+    background-color: var(--background-color-active);
+}
+
+.btnbig {
+    display: inline-flex;
+    padding: 0.6em 1em;
+    text-decoration: none;
+    border: none;
+    font-weight: 500;
+    color: var(--background-color-filler);
+    border-radius: 0.3em;
+    background-color: var(--background-color-button);
+    cursor: pointer;
+    transition: .2s;
+}
+
+.btnbig:hover {
+    background-color: var(--background-color-button-hover);
+}
+
+.btnbig:active {
+    background-color: var(--background-color-button-active);
 }
