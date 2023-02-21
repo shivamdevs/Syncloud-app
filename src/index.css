@@ -66,7 +66,7 @@ img {
 }
 
 :root {
-    --background-scroller: #dadce0;
+    --background-scroller: #828c9f;
 
     --background-color: #e0e4ed;
     --background-color-hover: #e4e8ee;
@@ -87,7 +87,6 @@ img {
     --border-color-light: #e6e6f3;
 
     --box-shadow: #0002;
-    --color-scheme: none;
 }
 
 :root[data-theme="dark"] {
@@ -112,7 +111,7 @@ img {
     --border-color-light: #191925;
 
     --box-shadow: #20242a72;
-    --color-scheme: dark;
+    color-scheme: dark;
 }
 
 :root,
@@ -120,7 +119,6 @@ html,
 body {
     background-color: var(--background-color);
     color: var(--color);
-    color-scheme: var(--color-scheme);
 }
 
 
@@ -229,4 +227,16 @@ div:has(> .contextmenu.negative) {
 
 .btnbig:active {
     background-color: var(--background-color-button-active);
+}
+
+
+
+
+
+.line-break {
+    min-height: 1px;
+    height: 1px;
+    width: 100%;
+    display: block;
+    background-color: var(--border-color-light);
 }

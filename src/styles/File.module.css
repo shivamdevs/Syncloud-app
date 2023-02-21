@@ -1,0 +1,49 @@
+.grid {
+    width: 100%;
+    background-color: var(--background-color-filler);
+    padding: 1em;
+    border-radius: 0.5em;
+    border: 1px solid var(--border-color);
+    transition: .2s;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 1em;
+    user-select: none;
+}
+
+.grid:hover {
+    box-shadow: 0 0 10px 4px var(--box-shadow);
+}
+
+.grid[data-active=true] {
+    box-shadow: 0 0 0 2px var(--background-color-button);
+}
+
+.screen {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.image {
+    width: 1em;
+    font-size: 2em;
+}
+
+.name {
+    flex: 1;
+    width: calc(100% - 3em);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
+
+.image[data-type=folder] {
+    color: rgb(102, 8, 244);
+}

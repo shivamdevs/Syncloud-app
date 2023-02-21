@@ -1,0 +1,50 @@
+.editor {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    background-color: #0009;
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;
+    background-color: var(--background-color-filler);
+    padding: 1em;
+    border-radius: 0.5em;
+    box-shadow: 0 0 5px 3px var(--box-shadow);
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+.title {
+    font-size: 1.5em;
+    font-weight: 700;
+}
+.input {
+    width: 100%;
+    padding: 1em;
+    border: none;
+    border-bottom: 3px solid var(--background-color-hover);
+    outline: none;
+    margin-block: 1em;
+    transition: .2s;
+}
+
+.input:focus {
+    border-block-color: var(--background-color-button);
+}
+
+.button {
+    color: red;
+}

@@ -1,0 +1,8 @@
+.gridview {
+    width: 100%;
+    display: grid;
+    padding: 1em;
+    flex: 1;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1em;
+}

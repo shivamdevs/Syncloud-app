@@ -1,0 +1,83 @@
+.uploader {
+    padding: 1em;
+    display: flex;
+    justify-content: flex-end;
+    position: sticky;
+    bottom: 0;
+    z-index: 2;
+}
+
+.body {
+    width: 100%;
+    max-width: 320px;
+    background-color: var(--background-color-filler);
+    border-radius: 0.5em;
+    box-shadow: 0 0 5px 3px var(--box-shadow);
+}
+
+.header {
+    padding: 0.6em;
+    gap: 0.6em;
+    font-size: 12px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 700;
+    font-size: 1.3em;
+    padding-left: 0.5em;
+}
+
+.main {
+    border-top: 1px solid var(--border-color);
+    max-height: min(calc(100vh - 20em), 500px);
+    overflow: auto;
+}
+
+.item {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 0.5em 1em;
+    border-bottom: 1px solid var(--border-color);
+    gap: 1em;
+}
+
+.image {
+    width: 2em;
+    height: 2em;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.name {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.count {
+    font-size: 12px;
+    color: var(color-gray);
+    font-weight: 600;
+}
+
+.main .item:last-child {
+    border-bottom: none;
+}
+
+.icon {
+    width: 1em;
+    height: 1em;
+    color: rgb(39, 181, 39);
+}

@@ -6,6 +6,8 @@ import Accounts from "myoasis-accounts";
 import Context from "./app/Context";
 import Index from "./components/Index";
 import Data from "./app/Data";
+import snapShot, { unsnapShot } from "./firebase/sync";
+import { toast, Toaster } from "react-hot-toast";
 
 function App() {
     const navigate = useNavigate();
@@ -23,6 +25,13 @@ function App() {
         }
         return {};
     });
+    const [editor, setEditor] = useState(null);
+    const [parent, setParent] = useState("default");
+    const [uploader, setUploader] = useState([]);
+
+    const [childrenFromParent, setChildrenFromParent] = useState(null);
+    const [childrenEverysingle, setChildrenEverysingle] = useState(null);
+
 
     useEffect(() => {
         if (error) console.error(error);
@@ -38,15 +47,45 @@ function App() {
 
     useEffect(() => {
         if (window.localStorage) window.localStorage.setItem(`${Data.bucket}settings`, JSON.stringify(local));
-
         document.documentElement.dataset.theme = local["theme"];
     }, [local]);
 
+    useEffect(() => {
+        if (user) {
+            snapShot(user, (snap) => {
+                // console.log(snap);
+                setChildrenFromParent(snap.childrenFromParent);
+                setChildrenEverysingle(snap.childrenEverysingle);
+            }, (err) => {
+                toast.error(String(err));
+            })
+        } else {
+            setChildrenFromParent(null);
+            setChildrenEverysingle(null);
+            unsnapShot();
+        }
+    }, [user, user?.uid]);
+
     const context = {
+
+        options: local,
+
+        editor,
+        setEditor,
+
+        uploader,
+        setUploader,
+
+        parent,
+        setParent,
 
         user,
         userError: error,
         userLoading: loading,
+
+        childrenFromParent,
+
+        childrenEverysingle,
 
         goto(to, replace = false) {
             const url = new URL(to, window?.location.origin);
@@ -72,6 +111,7 @@ function App() {
                 <Route path="/accounts/*" element={<Accounts onUserChange={context.back} />} />
                 <Route path="/*" element={<Index />} />
             </Routes>
+            <Toaster position="bottom-center" />
         </Context.Provider>
     );
 };
