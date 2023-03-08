@@ -89,7 +89,7 @@ function App() {
 
         goto(to, replace = false) {
             const url = new URL(to, window?.location.origin);
-            if (url.pathname === location.pathname) return;
+            if (url.href === location.href) return;
             navigate(to, { replace: replace });
         },
         back() {
@@ -100,9 +100,13 @@ function App() {
             }
         },
         updateTheme(theme) {
-            if (theme !== "dark") theme = "light";
+            if (theme !== "dark") theme = "";
             updateLocal("theme", theme);
-        }
+        },
+        updateDisplay(display) {
+            if (display !== "list") display = "";
+            updateLocal("display", display);
+        },
     };
 
     return (

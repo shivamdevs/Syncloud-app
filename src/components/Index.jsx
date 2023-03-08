@@ -9,11 +9,9 @@ import Tippy, { tippy } from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/shift-away.css';
 import classNames from 'classnames';
-import Uploader from './Uploader';
 import Editor from './Editor';
 import Adder from './Adder';
 import Folder from './Folder';
-import Selecto from 'react-selecto';
 
 tippy.setDefaultProps({
     arrow: false,
@@ -23,7 +21,7 @@ tippy.setDefaultProps({
 });
 
 function Index() {
-    const { user, userLoading, goto, updateTheme, uploader, options, editor } = useContext(Context);
+    const { user, userLoading, goto, updateTheme, options, editor } = useContext(Context);
     return (
         <>
             <div className={classNames("no-focus", css.layout)}>
@@ -66,32 +64,7 @@ function Index() {
                         <Adder />
                     </aside>
                     <main className={css.main}>
-                        <div className={css.mainwrap}>
-                            <Selecto
-                                dragContainer={".selecto-area"}
-                                selectableTargets={[".selecto-area > .selecto-wrapper > *"]}
-                                hitRate={0}
-                                selectByClick={true}
-                                selectFromInside={true}
-                                continueSelect={false}
-                                continueSelectWithoutDeselect={true}
-                                toggleContinueSelect={"shift"}
-                                toggleContinueSelectWithoutDeselect={[["ctrl"], ["meta"]]}
-                                ratio={0}
-                                onSelect={e => {
-                                    e.added.forEach(el => {
-                                        el.dataset.active = true;
-                                    });
-                                    e.removed.forEach(el => {
-                                        el.dataset.active = false;
-                                    });
-                                }}
-                            ></Selecto>
-                            <div className={classNames(css.mainbody, "selecto-area")}>
-                                <Folder />
-                            </div>
-                            {uploader?.length > 0 && <Uploader />}
-                        </div>
+                        <Folder />
                     </main>
                 </section>}
             </div>

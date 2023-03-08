@@ -10,7 +10,7 @@ function Search() {
     const [search, setSearch] = useState("");
     const [focused, setFocused] = useState(false);
     const [result, setResult] = useState([]);
-    const { childrenEverysingle: files } = useContext(Context);
+    const { childrenEverysingle: files, goto } = useContext(Context);
 
     const input = useRef();
     const section = useRef();
@@ -42,7 +42,12 @@ function Search() {
             <div className={css.resultbox}>
                 <div className={css.results}>
                     <div className={css.resultwarn}>Search 5-6 characters to get strong results...</div>
-                    {result.map(item => <div key={item.id} className={css.resultitem}>
+                    {result.map(item => <div key={item.id} className={css.resultitem} onClick={() => {
+                        input.current.blur();
+                        setSearch("");
+                        setFocused(false);
+                        goto(item.type === "folder" ? item.id : `${item.parent}#${item.id}`);
+                    }}>
                         <div className={css.resulticon} data-type={item.type}>
                             {item.type === "folder" ? <i className="fas fa-folder"></i> : <i className="fas fa-file"></i>}
                         </div>

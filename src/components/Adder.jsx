@@ -107,7 +107,6 @@ function Adder() {
         };
         input.click();
     };
-    
 
     return (
         <>

@@ -30,7 +30,7 @@ function Uploader() {
                         {extend ? <i className="fas fa-chevron-down"></i> : <i className="fas fa-chevron-up"></i>}
                     </button>
                     <button className="btnround" onClick={() => setUploader([])}>
-                        <ii className="fas fa-times"></ii>
+                        <i className="fas fa-times"></i>
                     </button>
                 </header>
                 {extend && <div className={css.main}>

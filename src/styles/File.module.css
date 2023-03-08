@@ -28,12 +28,12 @@
     z-index: 1;
 }
 
-.image {
+.grid .image {
     width: 1em;
     font-size: 2em;
 }
 
-.name {
+.grid .name {
     flex: 1;
     width: calc(100% - 3em);
     text-overflow: ellipsis;
@@ -46,4 +46,34 @@
 
 .image[data-type=folder] {
     color: rgb(102, 8, 244);
+}
+
+.list {
+    position: relative;
+    transition: .2s;
+}
+.list .size {
+    width: 15%;
+}
+
+.list .name {
+    width: calc(70% - 1.3em);
+}
+
+.list .modify {
+    width: 15%;
+}
+
+.list .image {
+    width: 1em;
+    font-size: 1.3em;
+}
+
+.list:hover {
+    background-color: var(--background-color-filler);
+}
+
+.list[data-redirected=true] {
+    background-color: var(--background-color-filler);
+    box-shadow: 0 0 0 2px inset var(--background-color-button);
 }
